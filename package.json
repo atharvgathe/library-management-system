@@ -1,0 +1,13 @@
+{
+  "name": "library-management-system",
+  "version": "1.0.0",
+  "description": "Library Management System: Node.js frontend tooling + Flask + SQLite",
+  "scripts": {
+    "build": "node build.js",
+    "watch": "node build.js --watch",
+    "dev": "node dev.js",
+    "start": "npm run build && python app.py",
+    "test": "npm run build && python -m unittest test_app.py -v"
+  },
+  "devDependencies": { "esbuild": "^0.25.0" }
+}

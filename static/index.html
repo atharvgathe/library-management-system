@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Library Management System</title><link rel="stylesheet" href="/static/style.css"></head>
+<body>
+<header><div class="wrap bar"><h1>📚 Library<span>MS</span></h1>
+ <nav><button class="tab on" data-tab="books">Books</button><button class="tab" data-tab="members">Members</button><button class="tab" data-tab="history">History</button></nav></div></header>
+<div id="toasts"></div>
+<main class="wrap">
+ <div class="stats">
+  <div class="stat"><small>Total books</small><b id="sTotal">0</b></div>
+  <div class="stat ok"><small>Available</small><b id="sAvail">0</b></div>
+  <div class="stat bad"><small>Issued</small><b id="sIssued">0</b></div>
+  <div class="stat"><small>Members</small><b id="sMem">0</b></div>
+ </div>
+
+ <div id="tab-books" class="pane">
+  <div class="grid">
+   <section class="panel"><h2>Books</h2>
+    <div class="tools">
+     <input id="search" type="search" placeholder="🔍 Search title, author or ISBN…">
+     <select id="filter"><option value="all">All</option><option value="in">Available</option><option value="out">Issued</option></select>
+     <select id="memberSel"><option value="">Member to issue to…</option></select>
+    </div>
+    <div class="scroll"><table><thead><tr><th>Title</th><th>Author</th><th>ISBN</th><th>Category</th><th>Status</th><th></th></tr></thead><tbody id="books"></tbody></table></div>
+    <p id="empty" class="empty" hidden>📭 No books found.</p>
+   </section>
+   <section class="panel"><h2>Add Book</h2>
+    <form id="bookForm"><label>Title<input id="title" required></label><label>Author<input id="author" required></label>
+     <label>ISBN<input id="isbn" placeholder="10 or 13 digits" required></label>
+     <label>Category<input id="category" list="cats" placeholder="e.g. Fiction"><datalist id="cats"></datalist></label>
+     <button class="primary">+ Add Book</button></form>
+   </section>
+  </div>
+ </div>
+
+ <div id="tab-members" class="pane" hidden>
+  <div class="grid">
+   <section class="panel"><h2>Members</h2><div class="scroll"><table><thead><tr><th>Name</th><th>Email</th></tr></thead><tbody id="members"></tbody></table></div></section>
+   <section class="panel"><h2>Add Member</h2><form id="memForm"><label>Name<input id="mname" required></label><label>Email<input id="memail" type="email" required></label><button class="primary">+ Add Member</button></form></section>
+  </div>
+ </div>
+
+ <div id="tab-history" class="pane" hidden>
+  <section class="panel"><h2>Issue History</h2><div class="scroll"><table><thead><tr><th>Book</th><th>Member</th><th>Issued</th><th>Returned</th></tr></thead><tbody id="hist"></tbody></table></div></section>
+ </div>
+</main>
+<script src="/static/app.js"></script></body></html>
